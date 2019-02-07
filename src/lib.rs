@@ -21,7 +21,7 @@ use std::f64::consts::{E, PI};
 
 pub fn run(arg: String) -> f64 {
     if arg.is_empty() {
-        panic!("No input")
+        panic!("Input is an empty string")
     }
     let exprs: Vec<&str> = arg.split_whitespace().collect();
     compute(&exprs)[0]

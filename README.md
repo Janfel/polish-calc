@@ -34,5 +34,5 @@ plc "+ * 2 PI E"
 ## Roadmap
 
 - [x] Basic arithmetic
-- [ ] Read from stdin
+- [x] Read from stdin
 - [ ] Read from file

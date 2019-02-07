@@ -16,11 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
-use std::env;
+use std::{
+    env,
+    io::{self, Read},
+};
 
 use polish_calc::run;
 
 fn main() {
-    let arg = env::args().nth(1).expect("No input");
+    let arg = env::args().nth(1).unwrap_or_else(|| {
+        let mut buf = String::new();
+        io::stdin().read_to_string(&mut buf).unwrap();
+        buf
+    });
     println!("{}", run(arg));
 }
