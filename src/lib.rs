@@ -68,29 +68,24 @@ mod tests {
         assert!((result - expected).abs() < EPSILON);
     }
 
-    #[test]
-    fn addition() {
-        calculate("+ 2 3", 5.0)
+    macro_rules! param_tests {
+        ($($name:ident: $value:expr,)*) => {
+        $(
+            #[test]
+            fn $name() {
+                let (input, expected) = $value;
+               calculate(input, expected)
+            }
+        )*
+        }
     }
 
-    #[test]
-    fn subtraction() {
-        calculate("- 10 5", 5.0)
-    }
-
-    #[test]
-    fn multiplication() {
-        calculate("* 3 3", 9.0)
-    }
-
-    #[test]
-    fn division() {
-        calculate("/ 6 2", 3.0)
-    }
-
-    #[test]
-    fn real_division() {
-        calculate("/ 2 3", 2.0 / 3.0)
+    param_tests! {
+        addition: ("+ 2 3", 5.0),
+        subtraction: ("- 10 5", 5.0),
+        multiplication: ("* 3 3", 9.0),
+        division: ("/ 6 2", 3.0),
+        real_division: ("/ 2 3", 2.0 / 3.0),
     }
 
     #[allow(clippy::float_cmp)]
