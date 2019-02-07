@@ -37,6 +37,17 @@ fn compute(exprs: &[&str]) -> Vec<f64> {
         "-" => getval() - getval(),
         "*" => getval() * getval(),
         "/" => getval() / getval(),
+        "**" => getval().powf(getval()),
+        "neg" => -getval(),
+        "abs" => getval().abs(),
+        "sqrt" => getval().sqrt(),
+        "ln" => getval().ln(),
+        "sin" => getval().sin(),
+        "cos" => getval().cos(),
+        "tan" => getval().tan(),
+        "asin" => getval().asin(),
+        "acos" => getval().acos(),
+        "atan" => getval().atan(),
         num => num.parse().expect("Invalid Token"),
     };
     vals.push(result);
