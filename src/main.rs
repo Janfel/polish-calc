@@ -18,7 +18,7 @@
  */
 use std::env;
 
-use polish-calc::run;
+use polish_calc::run;
 
 fn main() {
     let arg = env::args().nth(1).expect("No input");
