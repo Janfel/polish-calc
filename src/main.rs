@@ -19,7 +19,7 @@
 use std::env;
 
 fn main() {
-    println!("Hello, world!");
-    let args: Vec<String> = env::args().collect();
-    println!("{:?}", args);
+    let arg = env::args().nth(1).expect("No input");
+
+    println!("{:?}", arg);
 }
