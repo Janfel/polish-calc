@@ -22,7 +22,5 @@ use plc::run;
 
 fn main() {
     let arg = env::args().nth(1).expect("No input");
-    println!("{:?}", arg);
-    let result = run(arg);
-    println!("{}", result);
+    println!("{}", run(arg));
 }
