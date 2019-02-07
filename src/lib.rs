@@ -62,7 +62,10 @@ fn compute(exprs: &[&str]) -> Vec<f64> {
 
 #[cfg(test)]
 mod tests {
-    use std::f64::{EPSILON, INFINITY};
+    use std::f64::{
+        consts::{FRAC_PI_3, FRAC_PI_4, FRAC_PI_6},
+        EPSILON, INFINITY,
+    };
 
     use super::*;
 
@@ -89,6 +92,19 @@ mod tests {
         multiplication: ("* 3 3", 9.0),
         division: ("/ 6 2", 3.0),
         real_division: ("/ 2 3", 2.0 / 3.0),
+        pow: ("** 3 2", 9.0),
+        neg: ("neg 2", -2.0),
+        abs: ("abs neg 4", 4.0),
+        sqrt: ("sqrt 16", 4.0),
+        ln: ("ln ** E 4", 4.0),
+        sin: ("sin PI", 0.0),
+        cos: ("cos PI", -1.0),
+        tan: ("tan * 0.25 PI", 1.0),
+        asin: ("asin 0.5", FRAC_PI_6),
+        acos: ("acos 0.5", FRAC_PI_3),
+        atan: ("atan 1", FRAC_PI_4),
+        e: ("E", E),
+        pi: ("PI", PI),
     }
 
     #[allow(clippy::float_cmp)]
