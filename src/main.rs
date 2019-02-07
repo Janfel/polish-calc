@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2019 Jan Felix Langenbach
  *
- * This file is part of plc.
+ * This file is part of polish-calc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  */
 use std::env;
 
-use plc::run;
+use polish-calc::run;
 
 fn main() {
     let arg = env::args().nth(1).expect("No input");

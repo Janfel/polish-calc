@@ -1,4 +1,4 @@
-# plc
+# polish-calc
 
 > A simple calculator for polish notation written in Rust.
 

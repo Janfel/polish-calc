@@ -1,5 +1,5 @@
 [package]
-name = "plc"
+name = "polish-calc"
 version = "0.1.0"
 authors = ["Jan Felix Langenbach <o.hase3@gmail.com>"]
 edition = "2018"
