@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 
+use std::f64::consts::{E, PI};
+
 pub fn run(arg: String) -> f64 {
     let exprs: Vec<&str> = arg.split_whitespace().collect();
     compute(&exprs)[0]
@@ -25,9 +27,6 @@ pub fn run(arg: String) -> f64 {
 fn compute(exprs: &[&str]) -> Vec<f64> {
     if exprs.is_empty() {
         return Vec::new();
-    }
-    if exprs.len() == 1 {
-        return vec![exprs[0].parse().expect("Invalid Token")];
     }
     let mut vals = compute(&exprs[1..]);
     let mut getval = || vals.pop().expect("Not enough operands in expression");
@@ -48,7 +47,11 @@ fn compute(exprs: &[&str]) -> Vec<f64> {
         "asin" => getval().asin(),
         "acos" => getval().acos(),
         "atan" => getval().atan(),
-        num => num.parse().expect("Invalid Token"),
+        "E" => E,
+        "PI" => PI,
+        num => num
+            .parse()
+            .unwrap_or_else(|_| panic!("Invalid Token: {}", num)),
     };
     vals.push(result);
     vals
@@ -56,11 +59,13 @@ fn compute(exprs: &[&str]) -> Vec<f64> {
 
 #[cfg(test)]
 mod tests {
+    use std::f64::{EPSILON, INFINITY};
+
     use super::*;
 
     fn calculate(expr: &str, expected: f64) {
         let result = run(expr.to_owned());
-        assert!((result - expected).abs() < std::f64::EPSILON);
+        assert!((result - expected).abs() < EPSILON);
     }
 
     #[test]
@@ -92,7 +97,7 @@ mod tests {
     #[test]
     fn zero_division() {
         let result = run("/ 6 0".to_owned());
-        assert_eq!(result, std::f64::INFINITY);
+        assert_eq!(result, INFINITY);
     }
 
 }
